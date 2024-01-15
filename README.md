@@ -1,6 +1,6 @@
 # IntelliScraper 🕷️
 
-![image](https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png)
+![image](https://github.com/herche-jane/IntelliScraper/blob/main/logo%20(2).png)
 
 
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
