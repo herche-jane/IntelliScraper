@@ -1,6 +1,6 @@
 # IntelliScraper 🕷️
 
-![Uploading DALL·E 2024-01-15 14.39.04 - A modern and sleek logo for a web scraping project named IntelliScraper. The logo should symbolize data extraction and intelligence, incorporating ele.png…]()
+![image](https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png)
 
 
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
