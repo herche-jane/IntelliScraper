@@ -1,0 +1,1 @@
+from intelliscraper.web_scraper import WebScraper
