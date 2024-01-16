@@ -15,26 +15,64 @@ def element_to_string(element):
     return f"{element.name} {' '.join([f'{k}={v}' for k, v in element.attrs.items()])}"
 
 
+
+
+
+def get_most_similar_paths(html, paths, vectorizer):
+    """根据层级路径构建特征向量，并找到与之相似度大于或等于 0.5 的元素路径"""
+    most_similar_paths = []
+    soup = BeautifulSoup(html, 'html.parser')
+    all_elements = soup.find_all()
+    all_elements_paths = [generate_element_path(el) for el in all_elements]
+
+    for path in paths:
+        path_vector = vectorizer.transform([path])
+        paths_vectors = vectorizer.transform(all_elements_paths)
+        similarities = cosine_similarity(path_vector, paths_vectors)
+
+        # 检查每个路径的相似度是否大于或等于 0.5
+        for index, similarity in enumerate(similarities[0]):
+            if similarity >= 0.7:
+                most_similar_paths.append(all_elements_paths[index])
+    return most_similar_paths
+
 def get_most_similar_element(current_html, target_json):
     rule_json = json.loads(target_json)
     paths = parse_rules_to_paths(rule_json)
     soup = BeautifulSoup(current_html, 'html.parser')
     all_elements_str = [element_to_string(el) for el in soup.find_all()]
     vectorizer = CountVectorizer().fit(all_elements_str)
-    target_paths = get_most_similar_paths(current_html, paths, vectorizer)
+    target_paths = get_most_similar_paths(current_html,paths, vectorizer)
+    if (len(target_paths) > 50):
+        target_paths = target_paths[:50]
     return target_paths
 
 
+def find_similar_elements(html, target_html, threshold=0.5):
+    # 构建原始html特征向量
+    html_elements_str, html_elements = build_feature_vector(html)
+    # 构建目标html特征向量
+    target_elements_str, _ = build_feature_vector(target_html)
+    print(target_elements_str)
+    vectorizer = CountVectorizer().fit(html_elements_str + target_elements_str)
+    html_vec = vectorizer.transform(html_elements_str)
+    target_vec = vectorizer.transform(target_elements_str)
+    similarities = cosine_similarity(target_vec, html_vec)
+    similar_elements = []
+    for index, similarity in enumerate(similarities[0]):
+        if similarity >= threshold:
+            similar_elements.append(html_elements[index])
+    return similar_elements
 
-def get_most_similar_paths(html, paths, vectorizer):
-    """根据层级路径构建特征向量，并直接找到对应的元素"""
-    most_similar_paths = []
-    for path in paths:
-        most_similar_path = find_most_similar_element_path(html, path, vectorizer)
-        if most_similar_path:
-            most_similar_paths.append(most_similar_path)
-    return most_similar_paths
 
+def build_feature_vector(html):
+    """构建特征向量"""
+    soup = BeautifulSoup(html, 'html.parser')
+    elements = soup.findAll()
+    elements_str = [element_to_string(el) for el in elements]
+    return elements_str, elements
+
+from bs4 import BeautifulSoup
 
 def generate_element_path(element):
     """生成元素的完整路径"""
