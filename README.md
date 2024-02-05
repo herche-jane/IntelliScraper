@@ -32,3 +32,9 @@ Imagine you're a data analyst needing to extract articles and updates from multi
 
 ## Conclusion 🎉
 In summary, IntelliScraper is not just a powerful web scraping tool; its intelligent design and user-friendliness make it an ideal choice for handling web data extraction tasks. Whether for business analysis, content monitoring, or development testing, IntelliScraper delivers outstanding performance and convenience.
+
+## GIT STAR
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=herche-jane/IntelliScraper&type=Date)](https://star-history.com/#herche-jane/IntelliScraper&Date)
+
