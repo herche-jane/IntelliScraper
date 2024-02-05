@@ -10,15 +10,13 @@ def clean_text(text):
     """ 移除文本中的空格和特殊字符 """
     return re.sub(r'\s+', '', text)
 
+
 def element_to_string(element):
     """将元素转换为字符串表示"""
     return f"{element.name} {' '.join([f'{k}={v}' for k, v in element.attrs.items()])}"
 
 
-
-
-
-def get_most_similar_paths(html, paths, vectorizer):
+def get_most_similar_paths(html, paths, vectorizer, similar=0.5):
     """根据层级路径构建特征向量，并找到与之相似度大于或等于 0.5 的元素路径"""
     most_similar_paths = []
     soup = BeautifulSoup(html, 'html.parser')
@@ -32,19 +30,20 @@ def get_most_similar_paths(html, paths, vectorizer):
 
         # 检查每个路径的相似度是否大于或等于 0.5
         for index, similarity in enumerate(similarities[0]):
-            if similarity >= 0.7:
+            if similarity >= similar:
                 most_similar_paths.append(all_elements_paths[index])
     return most_similar_paths
 
-def get_most_similar_element(current_html, target_json):
+
+def get_most_similar_element(current_html, target_json, max_reasult=50, similarity=0.5):
     rule_json = json.loads(target_json)
     paths = parse_rules_to_paths(rule_json)
     soup = BeautifulSoup(current_html, 'html.parser')
     all_elements_str = [element_to_string(el) for el in soup.find_all()]
     vectorizer = CountVectorizer().fit(all_elements_str)
-    target_paths = get_most_similar_paths(current_html,paths, vectorizer)
-    if (len(target_paths) > 50):
-        target_paths = target_paths[:50]
+    target_paths = get_most_similar_paths(current_html, paths, vectorizer, similar=similarity)
+    if (len(target_paths) > max_reasult):
+        target_paths = target_paths[:max_reasult]
     return target_paths
 
 
@@ -72,7 +71,9 @@ def build_feature_vector(html):
     elements_str = [element_to_string(el) for el in elements]
     return elements_str, elements
 
+
 from bs4 import BeautifulSoup
+
 
 def generate_element_path(element):
     """生成元素的完整路径"""
@@ -81,7 +82,6 @@ def generate_element_path(element):
         path_parts.append(element_to_string(element))
         element = element.parent
     return ' -> '.join(reversed(path_parts))
-
 
 
 def find_most_similar_element_path(html, path, vectorizer):
@@ -94,6 +94,7 @@ def find_most_similar_element_path(html, path, vectorizer):
     similarities = cosine_similarity(path_vector, paths_vectors)
     most_similar_index = similarities[0].argmax()
     return all_elements_paths[most_similar_index]
+
 
 def parse_rules_to_paths(rules_json):
     """从JSON规则中提取层级路径"""
@@ -121,7 +122,6 @@ def find_element_by_path(html, path):
         if found_element:
             current_element = found_element
     return current_element
-
 
 
 def parse_attributes(attr_str):
@@ -161,4 +161,3 @@ def split_attributes_improved(attr_str):
     pattern = r'(\w+(?:-\w+)*=[^\s\[]*(?:\[[^\]]*\])?)'
     attributes = re.findall(pattern, attr_str)
     return attributes
-

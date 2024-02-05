@@ -12,7 +12,7 @@ from intelliscraper.utils import clean_text, get_most_similar_element, find_elem
 
 
 class WebScraper:
-    def __init__(self, wanted_list, url=None, proxy=None, html=None, role_path=None,save_path=None):
+    def __init__(self, wanted_list, url=None, proxy=None, html=None, role_path=None,save_path=None,max_reasult=50,similarity=0.5):
         """
              初始化 WebScraper 类的实例。
 
@@ -31,6 +31,8 @@ class WebScraper:
         self.wanted_list = wanted_list
         self.role_path = role_path
         self.save_path = save_path
+        self.max_reasult = max_reasult
+        self.similarity = similarity
         if self.url:
             self.html = self.fetch_data_with_requests()
 
@@ -104,7 +106,7 @@ class WebScraper:
             if self.save_path:
                 with open(self.save_path, 'w', encoding='utf-8') as file:
                      json.dump(role_json, file, ensure_ascii=False)
-        results = get_most_similar_element(self.html, role_json)
+        results = get_most_similar_element(self.html, role_json, self.max_reasult, self.similarity)
         for result in results:
              element = find_element_by_path(self.html, result)
              if element:
