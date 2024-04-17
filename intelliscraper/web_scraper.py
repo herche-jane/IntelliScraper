@@ -7,12 +7,14 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 import json
 import re
 from bs4 import BeautifulSoup, Tag
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-from intelliscraper.utils import clean_text, get_most_similar_element, find_element_by_path
+from utils import clean_text, get_most_similar_element, find_element_by_path
 
 
 class WebScraper:
-    def __init__(self, wanted_list, url=None, proxy=None, html=None, role_path=None,save_path=None,max_reasult=50,similarity=0.5):
+    def __init__(self,wanted_list, url=None, proxy=None, html=None, role_path=None,save_path=None,example_element=None, element_regex=None,max_reasult=None,similarity=0.5):
         """
              初始化 WebScraper 类的实例。
 
@@ -33,6 +35,8 @@ class WebScraper:
         self.save_path = save_path
         self.max_reasult = max_reasult
         self.similarity = similarity
+        self.example_element = example_element
+        self.element_regex = element_regex
         if self.url:
             self.html = self.fetch_data_with_requests()
 
@@ -61,6 +65,8 @@ class WebScraper:
         search_element_paths(soup, '')
         return stack_list
 
+
+
     def fetch_data_with_requests(self):
         """
               使用请求从 URL 获取 HTML 内容。
@@ -85,6 +91,10 @@ class WebScraper:
         except requests.RequestException as e:
             print(f"请求错误: {e}")
         return None
+
+
+
+
     def build(self):
         """
              构建并返回从 HTML 中找到的元素。
@@ -110,7 +120,29 @@ class WebScraper:
         for result in results:
              element = find_element_by_path(self.html, result)
              if element:
-                 elements.append(element)
+                 normalized_element = self.normalize_element(str(element), self.element_regex)
+                 if normalized_element:
+                     elements.append(normalized_element)
         return elements
+
+    def normalize_element(self,html_content, element_regex):
+        """
+        Normalize a given HTML element string using a regex pattern.
+        Extracts and returns the portion of the HTML that matches the regex.
+
+        :param html_content: The HTML content string of an element.
+        :param element_regex: Regex pattern to apply for normalization.
+        :return: A normalized or extracted part of the HTML element, or None if no match is found.
+        """
+        match = re.search(element_regex, html_content)
+        if match:
+            result = match.group()
+            print(result)
+            return result  # Return the matched part of the HTML
+        return None  # Return None if no match is found
+
+
+
+
 
 
