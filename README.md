@@ -33,6 +33,21 @@ Imagine you're a data analyst needing to extract articles and updates from multi
 ## Conclusion 🎉
 In summary, IntelliScraper is not just a powerful web scraping tool; its intelligent design and user-friendliness make it an ideal choice for handling web data extraction tasks. Whether for business analysis, content monitoring, or development testing, IntelliScraper delivers outstanding performance and convenience.
 
+## Restructuring Plans 🔄(2024-06-01)(pending)
+IntelliScraper is set to undergo a significant restructuring to enhance its functionality and adaptability. Here are the key aspects of our upcoming improvements:
+
+### Parent Element Definition
+By defining a parent element, IntelliScraper will be able to automatically extract all similar elements under the same path, significantly increasing the efficiency of data collection.
+
+### Built-In Element Parser
+We are introducing an advanced parser that will handle element path extraction and text retrieval. This parser will be extensible, allowing users to inherit and customize it according to their specific needs.
+
+### Multiple Targets and Concurrent Scraping
+The new version will support defining multiple scraping targets, enabling concurrent data extraction. This feature is designed to optimize performance and handle larger volumes of data efficiently.
+
+These enhancements aim to make IntelliScraper not just more powerful, but also more intuitive and responsive to complex web scraping needs. With these changes, users will experience a more dynamic tool capable of adapting to a variety of web environments and tasks.
+Stay tuned for updates as we roll out these exciting new features!
+
 ## Contact me
 If you need help or wish to discuss some issues or are interested in me, please contact herchejane12@gmail.com. I will respond promptly and look forward to your email.
 
