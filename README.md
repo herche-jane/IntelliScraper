@@ -48,6 +48,14 @@ The new version will support defining multiple scraping targets, enabling concur
 These enhancements aim to make IntelliScraper not just more powerful, but also more intuitive and responsive to complex web scraping needs. With these changes, users will experience a more dynamic tool capable of adapting to a variety of web environments and tasks.
 Stay tuned for updates as we roll out these exciting new features!
 
+## Restructuring Plans 🔄(2024-06-25)(pending)
+### Request and Response Capture Capability
+We plan to integrate a feature that captures HTTP and HTTPS requests and responses during the scraping process. This capability will allow IntelliScraper to log detailed interaction data, providing insights into the dynamics of web communication and aiding in debugging and analysis.These enhancements will not only make IntelliScraper more powerful but also easier to use and adapt to complex scraping tasks. With these improvements, users will be able to handle a broader range of web environments efficiently, making IntelliScraper a more versatile tool for web data extraction.
+
+## Commitment to Performance and Usability
+With these restructuring efforts, IntelliScraper aims to deliver a higher level of performance and a user-friendly experience, ensuring that it remains a top choice for professionals and developers in need of a reliable web scraping solution.
+Stay tuned for more updates as we continue to develop and refine IntelliScraper to meet the evolving needs of our users.
+
 ## Contact me
 If you need help or wish to discuss some issues or are interested in me, please contact herchejane12@gmail.com. I will respond promptly and look forward to your email.
 
