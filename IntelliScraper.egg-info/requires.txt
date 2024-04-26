@@ -1,0 +1,4 @@
+beautifulsoup4
+scikit-learn
+requests
+utils
