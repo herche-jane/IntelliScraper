@@ -6,58 +6,52 @@
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
+# Restructuring Plans for IntelliScraper 🔄(pending)
+
 ## Introduction 🌟
 **IntelliScraper** is an advanced Python web scraping project designed for precise HTML content parsing and feature matching to extract key information from specific web pages. Utilizing powerful libraries like BeautifulSoup and scikit-learn, it offers an efficient and flexible way to scrape and process web data.
 
-## Usage 🛠️
-- **Data Extraction and Analysis**: Extract necessary data from various web pages, supporting data analysis and market research.
-- **Content Monitoring**: Monitor changes in frequently updated website content, such as news, price updates, etc.
-- **Automated Testing**: Useful for web developers for automated testing of web content and layout.
+## Upcoming Enhancements
 
-## Features and Benefits 💡
-- **High Customization**: Define a data list (`wanted_list`) for targeted data extraction.
-- **Intelligent Matching**: Utilize cosine similarity algorithms for smart web element matching, enhancing accuracy.
-- **User-Friendly**: Simple to use despite the underlying complexity. Just provide the URL, required data, and rule path to start scraping.
-- **Flexibility**: Supports fetching HTML directly via URL or using existing HTML content, adapting to different scenarios.
-- **Extensibility**: Core functionality implemented in a class, easy to inherit and extend to meet specific needs.
+### Enhanced Path and Attribute Matching
+We are refining our path matching algorithms to enhance accuracy significantly. The new system will support:
+- **Multi-Attribute Matching**: Allows more precise targeting of elements based on multiple attributes, improving the granularity of data extraction.
+- **Robust Path-to-Element Resolution**: Ensures that elements are accurately identified and retrieved based on their paths in the DOM structure.
 
-## Why Choose IntelliScraper? 🚀
-- **Advanced Technology Stack**: Incorporates the latest BeautifulSoup and scikit-learn libraries for efficient processing and accurate data extraction.
-- **Adaptability**: Handles various complex web structures, from simple blogs to dynamic websites.
-- **User-Friendly**: Easy setup and a few lines of code make it accessible even for non-professional developers.
-- **Exceptional Performance**: Offers higher accuracy and efficiency compared to traditional static rule-based scrapers.
+### Script Tag Exclusion
+To ensure that our data extraction is not affected by JavaScript or other script content:
+- **Automatic Script Exclusion**: IntelliScraper will automatically exclude script tags from the parsing process, reducing noise and preventing the execution of unwanted scripts.
 
-## Application Scenarios 📚
-Imagine you're a data analyst needing to extract articles and updates from multiple blogs regularly. With IntelliScraper, you can easily fetch this data for further analysis and reporting. Similarly, if you're a web developer needing to monitor website content changes, IntelliScraper can automate this process, saving time and effort.
+### Parent-Child Element Synchronization
+Enhancing the ability to define and extract elements based on their hierarchical relationships:
+- **Parent Element Specification**: Users can specify a parent element to automatically extract all similar child elements under the same path.
+- **Depth-Specific Parent Structure**: Support for defining the depth of parent structures to fine-tune element extraction.
 
-## Conclusion 🎉
-In summary, IntelliScraper is not just a powerful web scraping tool; its intelligent design and user-friendliness make it an ideal choice for handling web data extraction tasks. Whether for business analysis, content monitoring, or development testing, IntelliScraper delivers outstanding performance and convenience.
+### Advanced Element and Text Extraction
+Improving the flexibility and accuracy of how data is retrieved:
+- **Direct Element Passing**: Users can now pass element objects directly, enhancing the flexibility of the scraping tasks.
+- **Regular Expression Support in Data Results**: Integration of regular expressions to refine and validate data extraction results.
+- **Choice Between Element or Non-Element Results**: Users can specify whether to retrieve the element itself or its textual content.
 
-## Restructuring Plans 🔄(2024-06-01)(pending)
-IntelliScraper is set to undergo a significant restructuring to enhance its functionality and adaptability. Here are the key aspects of our upcoming improvements:
+### Data Export and Storage
+To facilitate data usage and storage:
+- **Structured Data Export**: Options to export data directly into formats like Excel or directly into databases, supporting a broader range of data utilization scenarios.
 
-### Parent Element Definition
-By defining a parent element, IntelliScraper will be able to automatically extract all similar elements under the same path, significantly increasing the efficiency of data collection.
-
-### Built-In Element Parser
-We are introducing an advanced parser that will handle element path extraction and text retrieval. This parser will be extensible, allowing users to inherit and customize it according to their specific needs.
-
-### Multiple Targets and Concurrent Scraping
-The new version will support defining multiple scraping targets, enabling concurrent data extraction. This feature is designed to optimize performance and handle larger volumes of data efficiently.
-
-These enhancements aim to make IntelliScraper not just more powerful, but also more intuitive and responsive to complex web scraping needs. With these changes, users will experience a more dynamic tool capable of adapting to a variety of web environments and tasks.
-Stay tuned for updates as we roll out these exciting new features!
-
-## Restructuring Plans 🔄(2024-06-25)(pending)
-### Request and Response Capture Capability
-We plan to integrate a feature that captures HTTP and HTTPS requests and responses during the scraping process. This capability will allow IntelliScraper to log detailed interaction data, providing insights into the dynamics of web communication and aiding in debugging and analysis.These enhancements will not only make IntelliScraper more powerful but also easier to use and adapt to complex scraping tasks. With these improvements, users will be able to handle a broader range of web environments efficiently, making IntelliScraper a more versatile tool for web data extraction.
+### Full HTML Structure Retrieval
+- **Page HTML Retrieval**: Capability to fetch and store complete HTML of the pages, preserving the structural integrity for detailed analysis.
 
 ## Commitment to Performance and Usability
-With these restructuring efforts, IntelliScraper aims to deliver a higher level of performance and a user-friendly experience, ensuring that it remains a top choice for professionals and developers in need of a reliable web scraping solution.
-Stay tuned for more updates as we continue to develop and refine IntelliScraper to meet the evolving needs of our users.
+With these restructuring efforts, IntelliScraper aims to deliver a higher level of performance and a more user-friendly experience. We are committed to making IntelliScraper not just more powerful, but also easier to use and adapt to complex scraping tasks.
 
-## Contact me
-If you need help or wish to discuss some issues or are interested in me, please contact herchejane12@gmail.com. I will respond promptly and look forward to your email.
+## Why Upgrade IntelliScraper? 🚀
+These enhancements will make IntelliScraper a more versatile tool for web data extraction, capable of handling a broader range of web environments efficiently. Expect a tool that adapts seamlessly to your needs, whether for business analysis, content monitoring, or development testing.
+
+## Stay Updated
+Stay tuned for updates as we roll out these exciting new features. We look forward to continuing to support your data extraction needs with IntelliScraper.
+
+## Contact Us
+For more information, assistance, or to share feedback, please contact us at herchejane12@gmail.com. We value your input and are eager to hear from you.
+
 
 ## Star History
 
