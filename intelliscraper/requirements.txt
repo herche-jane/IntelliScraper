@@ -1,0 +1,4 @@
+beautifulsoup4~=4.12.2
+scikit-learn~=1.3.2
+requests~=2.31.0
+utils~=1.0.1
