@@ -1,0 +1,9 @@
+class PathComparator:
+    """Base class for comparing paths."""
+
+    def __init__(self):
+        pass
+
+    def compare(self, path1, path2):
+        """Compare two paths and return a similarity score."""
+        raise NotImplementedError("compare method must be implemented in subclasses")
