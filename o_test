@@ -1,0 +1,14 @@
+from collections import Counter
+import math
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import euclidean_distances
+
+text1 = "html  body#gsr  div#main  div#cnt  div#rcnt  div#center_col  div#res  div#search  div  div#rso  div.MjjYud  div.g.Ww4FFb.vt6azd.tF2Cxc.asEBEc  div.N54PNb.BToiNc.cvP2Ce  div.kb0PBd.cvP2Ce.A9Y9g  div.VwiC3b.yXK7lf.lVm3ye.r025kc.hJNv6b.Hdw6tb  span"
+text2 = "html  body#gsr  div#main  div#cnt  div#rcnt  div#center_col  div#res  div#search  div  div#rso  div.MjjYud  div.g.Ww4FFb.vt6azd.tF2Cxc.asEBEc  div.N54PNb.BToiNc.cvP2Ce  div.kb0PBd.cvP2Ce.A9Y9g.jGGQ5e  div.yuRUbf  div  span  a  h3.LC20lb.MBeuO.DKV0Md"
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text1, text2]).toarray()
+
+distance = euclidean_distances(X[0].reshape(1, -1), X[1].reshape(1, -1))
+
+print("Euclidean Distance:", distance[0][0])
